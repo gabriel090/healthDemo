@@ -16,7 +16,10 @@ public class HomeController {
     @Autowired
     DiagService diagService;
     SpecializeService specializeService;
-
+   /// The controller class is responsible for processing incoming RESTFul API request
+    //are used to return view to be rendered as a response
+    //@RequestMapping are annotations which mark classes as a request to handler to allow Spring
+    // recognize it as RESTful service during runtime
 
     @RequestMapping("/home")
     public Flux<SysmptomsResponse> home() {

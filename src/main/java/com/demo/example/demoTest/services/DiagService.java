@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 
 @Service
 public class DiagService {
-
+    //Service Class gets api call request
     @Autowired
     WebClient webClient;
 

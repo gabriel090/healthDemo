@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class DiagnosisResponse {
+    //This is a model class for diagnosis
+
     @JsonProperty("Issue")
     public Issue issue;
     @JsonProperty("Specialisation")

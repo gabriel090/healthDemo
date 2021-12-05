@@ -1,6 +1,9 @@
 import React from 'react';
 import Repository from '../repo/Repository';
 class DiagnosisComponent extends React.Component{
+/* Diagnosis class displays data fetched from diagnosis APi
+ Three parameters, symptom_id,gender, & age, are passed  to the request.
+ data is displayed in the datatable onclick of the button */
 	constructor(props){
 		super(props);
         //this.state = { diagnosis:{symptom_id:'',gender:'',age:''}};

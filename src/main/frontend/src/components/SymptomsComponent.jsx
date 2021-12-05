@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Repository from '../repo/Repository';
 
 class SymptomsComponent extends Component {
-
+/*
+ Page gets response from symptoms api and displays it in data table
+ */
     constructor(props) {
         super(props)
 

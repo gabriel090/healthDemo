@@ -11,6 +11,7 @@ public class WebClientConfigs {
 
     @Bean
     public WebClient createWebClient(){
+//        Main api link with some authentications
         return WebClient.builder()
 //                .baseUrl("https://sandbox-authservice.priaid.ch/")
                 .baseUrl("https://sandbox-healthservice.priaid.ch/")
