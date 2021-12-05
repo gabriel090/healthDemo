@@ -1,12 +1,15 @@
 import './App.css';
-import SymptomsComponent from './components/SymptomsComponent';
-import DiagnosisComponent from './components/DiagnosisComponent'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarComp from './components/NavbarComp';
 
-function App(){
-    return (
-        <div className = "container">
-        <DiagnosisComponent/>   
-        </div>
-    );
+function App() {
+  return (
+    <div className="App">
+      
+      <NavbarComp/>
+
+    </div>
+  );
 }
+
 export default App;

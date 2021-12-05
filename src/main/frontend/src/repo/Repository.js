@@ -4,8 +4,13 @@ const Repository = {
     fetchSymptoms: () => {
         return axios.get("/home");
     },
- 
+  
+    fetchDiagnosis: (symptoms,gender,age) => {
+        return axios.get(`/diag${symptoms}+${gender}+${age}`)
+    },
+
+
    
 };
-
+ 
 export default Repository;

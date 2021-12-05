@@ -11,4 +11,36 @@ public class SpecializationResponse {
         public double accuracy;
         @JsonProperty("Ranking")
         public int ranking;
+
+        public int getiD() {
+                return iD;
+        }
+
+        public void setiD(int iD) {
+                this.iD = iD;
+        }
+
+        public String getName() {
+                return name;
+        }
+
+        public void setName(String name) {
+                this.name = name;
+        }
+
+        public double getAccuracy() {
+                return accuracy;
+        }
+
+        public void setAccuracy(double accuracy) {
+                this.accuracy = accuracy;
+        }
+
+        public int getRanking() {
+                return ranking;
+        }
+
+        public void setRanking(int ranking) {
+                this.ranking = ranking;
+        }
 }

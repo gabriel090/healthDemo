@@ -1,20 +1,38 @@
 import React from 'react';
+import Repository from '../repo/Repository';
 class DiagnosisComponent extends React.Component{
 	constructor(props){
 		super(props);
-        this.state = { schedule:[]};
-		this.state={symptom_id:'',age:'',gender:''}
+        //this.state = { diagnosis:{symptom_id:'',gender:'',age:''}};
+		this.state={diagnosis:[]}
 	    this.handleChange = this.handleChange.bind(this)
 	    this.handleSubmit = this.handleSubmit.bind(this)	
 	}
+    loadDiagnosis = (symptom_id,gender,age) => {
+        Repository.fetchDiagnosis(symptom_id,gender,age)
+            .then((data) => {
+                this.setState({
+                    diagnosis: data.data
+                })
+            })
+    }
+    componentDidMount(){
+        this.loadDiagnosis()
+        // SymptomsService.getSymptoms().then((res) =>{
+        //     this.setState({symptoms: res.data})
+           
+        // })
+    }
+
 	handleSubmit(event){
         const { symptom_id, age,gender} = this.state
         event.preventDefault()
         alert(  `
         ____Diagnosis Details for Patient____\n
         Symptom ID : ${symptom_id}
-        Age : ${age}
         Gender : ${gender}
+        Age : ${age}
+      
         
         `)
     }
@@ -38,6 +56,7 @@ class DiagnosisComponent extends React.Component{
                                 <th>Issue Name</th>
                                 <th>Accuracy</th>
                                 <th>IcdName</th>
+                                <th>IcdName</th>
                                 <th>ProfName</th>
                                 <th>Ranking</th>
                                 <th>Specialization Name</th>
@@ -46,9 +65,24 @@ class DiagnosisComponent extends React.Component{
         
                         </thead>
                         <tbody>
-                            {/* {schedule.map(render_schedule)}  */}
-        
-                        </tbody>
+                        {
+                           
+                            this.state.diagnosis.map(
+                                diagnosis => 
+                                <tr key = {diagnosis.Issue.ID}>
+                                    <td>{diagnosis.Issue.ID}</td>
+                                    <td>{diagnosis.Issue.Name}</td>
+                                    <td>{diagnosis.Issue.Accuracy}</td>
+                                    <td>{diagnosis.Issue.Icd}</td>
+                                    <td>{diagnosis.Issue.IcdName}</td>
+                                    <td>{diagnosis.Issue.ProfName}</td>
+                                    <td>{diagnosis.Issue.Ranking}</td>
+                                    <td>{diagnosis.Specialisation.Name}</td>
+                                    <td>{diagnosis.Specialisation.ID}</td>
+                                </tr>
+                            )
+                        }
+                   </tbody>
                     </table>
                 </div>
                     );
@@ -68,19 +102,22 @@ class DiagnosisComponent extends React.Component{
                 </div>
 						<div>
               			<label>Gender:</label>
-              				<input type='radio'
-              				       name='gender'
-              				       value='male' 
-              				       checked={this.state.gender['gender']==="male"?true:false}
-              				        onChange={this.handleChange}/>
-              				       <label>Male</label>
-              				<input type='radio'
-              				       name='gender'
-              				       value='female' 
-              				       checked={this.state.gender['gender']==="female"?true:false}
-              				       onChange={this.handleChange}/>
-              				       <label>Female</label>
-
+                          <div></div>
+                          <input type="radio"
+                           name="gender"
+                           value='male' 
+                          
+                           onChange={this.handleChange}>
+                           {this.props.myValue}
+                           </input><label>Male</label>
+                          <div></div>
+                          <input type="radio"
+                           name="gender"
+                           value='Female' 
+                           onChange={this.handleChange}>
+                           {this.props.myValue}
+                           </input><label>Female</label>
+                          
               			   </div>
 						
                              <button onClick={()=>getSchedule()}>Click</button>
